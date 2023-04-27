@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NumbersView extends StatelessWidget {
-  const NumbersView({Key? key}) : super(key: key);
+  const NumbersView({super.key});
 
   @override
   Widget build(BuildContext context) {

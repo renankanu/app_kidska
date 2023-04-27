@@ -1,5 +1,5 @@
 import 'package:app_kidska/routes/app_routes.dart';
-import 'package:app_kidska/shared/theme.dart';
+import 'package:app_kidska/shared/themes.dart';
 import 'package:flutter/material.dart';
 
 void main() {

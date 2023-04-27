@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../shared/images.dart';
 import 'components/home_card.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,19 +13,38 @@ class HomeView extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
-              children: const [
-                HomeCard(),
-                HomeCard(),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                HomeCard(
+                  icon: AppImages.icNumbers,
+                  label: 'Números',
+                  onTap: () {},
+                ),
+                HomeCard(
+                  icon: AppImages.icLetters,
+                  label: 'Letras',
+                  onTap: () {},
+                ),
               ],
             ),
             const SizedBox(height: 20),
             Row(
-              children: const [
-                HomeCard(),
-                HomeCard(),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                HomeCard(
+                  icon: AppImages.icDog,
+                  label: 'Animais',
+                  height: 60,
+                  width: 60,
+                  onTap: () {},
+                ),
+                HomeCard(
+                  icon: AppImages.icNumbers,
+                  label: 'Números',
+                  onTap: () {},
+                ),
               ],
             ),
           ],

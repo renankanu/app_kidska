@@ -1,3 +1,4 @@
+import 'package:app_kidska/models/numbers.dart';
 import 'package:app_kidska/views/home/home_view.dart';
 import 'package:app_kidska/views/numbers/number_detail_view.dart';
 import 'package:app_kidska/views/numbers/numbers_view.dart';
@@ -29,9 +30,18 @@ class AppRoutes {
             },
           ),
           GoRoute(
-            path: _numberDetail,
+            path: '$_numberDetail/:number',
             builder: (BuildContext context, GoRouterState state) {
-              return const NumberDetailView();
+              if (state.params['number'] == null) {
+                return const SizedBox.shrink();
+              }
+              final Numbers number = Numbers.values.firstWhere(
+                (Numbers element) =>
+                    element.value == state.params['number'].toString(),
+              );
+              return NumberDetailView(
+                number: number,
+              );
             },
           ),
         ],

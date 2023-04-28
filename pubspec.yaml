@@ -14,6 +14,7 @@ dependencies:
   go_router: ^6.5.8
   flutter_svg: ^2.0.5
   font_awesome_flutter: ^10.4.0
+  audioplayers: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -27,7 +28,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/numbers/
-    - assets/sounds/
+    - assets/sounds/numbers/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -6,5 +6,6 @@ class AppTheme {
 
   static final ThemeData theme = ThemeData(
     scaffoldBackgroundColor: AppColor.linen,
+    textTheme: const TextTheme().copyWith(),
   );
 }

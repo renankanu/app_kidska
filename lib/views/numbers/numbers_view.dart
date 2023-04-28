@@ -2,6 +2,10 @@ import 'package:app_kidska/shared/components/app_bar.dart';
 import 'package:app_kidska/shared/images.dart';
 import 'package:app_kidska/views/numbers/components/button_number.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../models/numbers.dart';
+import '../../routes/app_routes.dart';
 
 class NumbersView extends StatelessWidget {
   const NumbersView({super.key});
@@ -23,7 +27,9 @@ class NumbersView extends StatelessWidget {
               children: [
                 ButtonNumber(
                   icon: AppImages.numbersZero,
-                  onTap: () {},
+                  onTap: () => context.go(
+                    '${AppRoutes.numberDetail}/${Numbers.zero.value}',
+                  ),
                 ),
                 ButtonNumber(
                   icon: AppImages.numbersOne,

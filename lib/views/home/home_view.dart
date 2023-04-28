@@ -41,8 +41,8 @@ class HomeView extends StatelessWidget {
                   onTap: () {},
                 ),
                 HomeCard(
-                  icon: AppImages.icNumbers,
-                  label: 'Números',
+                  icon: AppImages.icColors,
+                  label: 'Cores',
                   onTap: () {},
                 ),
               ],

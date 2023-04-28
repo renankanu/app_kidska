@@ -1,4 +1,6 @@
+import 'package:app_kidska/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../shared/images.dart';
 import 'components/home_card.dart';
@@ -20,7 +22,7 @@ class HomeView extends StatelessWidget {
                 HomeCard(
                   icon: AppImages.icNumbers,
                   label: 'Números',
-                  onTap: () {},
+                  onTap: () => context.go(AppRoutes.numbers),
                 ),
                 HomeCard(
                   icon: AppImages.icLetters,

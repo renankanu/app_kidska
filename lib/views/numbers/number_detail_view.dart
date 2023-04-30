@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:app_kidska/models/numbers.dart';
 import 'package:app_kidska/shared/colors.dart';
 import 'package:app_kidska/shared/components/app_bar.dart';
@@ -23,10 +25,11 @@ class NumberDetailView extends StatefulWidget {
 class _NumberDetailViewState extends State<NumberDetailView> {
   final _player = AudioPlayer();
   bool _isPlaying = false;
+  StreamSubscription<PlayerState>? _playerListener;
 
   @override
   void initState() {
-    _player.onPlayerStateChanged.listen((event) {
+    _playerListener = _player.onPlayerStateChanged.listen((event) {
       if (event == PlayerState.playing) {
         setState(() {
           _isPlaying = true;
@@ -38,6 +41,13 @@ class _NumberDetailViewState extends State<NumberDetailView> {
       }
     });
     super.initState();
+  }
+
+  @override
+  Future<void> dispose() async {
+    _playerListener?.cancel();
+    _player.dispose();
+    super.dispose();
   }
 
   String get iconByName {

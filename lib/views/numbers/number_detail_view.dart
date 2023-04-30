@@ -81,6 +81,24 @@ class _NumberDetailViewState extends State<NumberDetailView> {
     switch (widget.number) {
       case Numbers.zero:
         return AppSounds.zero;
+      case Numbers.one:
+        return AppSounds.one;
+      case Numbers.two:
+        return AppSounds.two;
+      case Numbers.three:
+        return AppSounds.three;
+      case Numbers.four:
+        return AppSounds.four;
+      case Numbers.five:
+        return AppSounds.five;
+      case Numbers.six:
+        return AppSounds.six;
+      case Numbers.seven:
+        return AppSounds.seven;
+      case Numbers.eight:
+        return AppSounds.eight;
+      case Numbers.nine:
+        return AppSounds.nine;
       default:
         return AppSounds.zero;
     }

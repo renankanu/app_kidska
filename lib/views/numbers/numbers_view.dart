@@ -10,6 +10,10 @@ import '../../routes/app_routes.dart';
 class NumbersView extends StatelessWidget {
   const NumbersView({super.key});
 
+  void goToView(BuildContext context, Numbers number) {
+    context.go('${AppRoutes.numberDetail}/${number.value}');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,45 +31,43 @@ class NumbersView extends StatelessWidget {
               children: [
                 ButtonNumber(
                   icon: AppImages.numbersZero,
-                  onTap: () => context.go(
-                    '${AppRoutes.numberDetail}/${Numbers.zero.value}',
-                  ),
+                  onTap: () => goToView(context, Numbers.zero),
                 ),
                 ButtonNumber(
                   icon: AppImages.numbersOne,
-                  onTap: () {},
+                  onTap: () => goToView(context, Numbers.one),
                 ),
                 ButtonNumber(
                   icon: AppImages.numbersTwo,
-                  onTap: () {},
+                  onTap: () => goToView(context, Numbers.two),
                 ),
                 ButtonNumber(
                   icon: AppImages.numbersThree,
-                  onTap: () {},
+                  onTap: () => goToView(context, Numbers.three),
                 ),
                 ButtonNumber(
                   icon: AppImages.numbersFour,
-                  onTap: () {},
+                  onTap: () => goToView(context, Numbers.four),
                 ),
                 ButtonNumber(
                   icon: AppImages.numbersFive,
-                  onTap: () {},
+                  onTap: () => goToView(context, Numbers.five),
                 ),
                 ButtonNumber(
                   icon: AppImages.numbersSix,
-                  onTap: () {},
+                  onTap: () => goToView(context, Numbers.six),
                 ),
                 ButtonNumber(
                   icon: AppImages.numbersSeven,
-                  onTap: () {},
+                  onTap: () => goToView(context, Numbers.seven),
                 ),
                 ButtonNumber(
                   icon: AppImages.numbersEight,
-                  onTap: () {},
+                  onTap: () => goToView(context, Numbers.eight),
                 ),
                 ButtonNumber(
                   icon: AppImages.numbersNine,
-                  onTap: () {},
+                  onTap: () => goToView(context, Numbers.nine),
                 ),
               ],
             ),

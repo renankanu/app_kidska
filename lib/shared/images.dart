@@ -20,4 +20,5 @@ class AppImages {
   static const String cloudOne = 'assets/images/app/cloud_one.svg';
   static const String cloudTwo = 'assets/images/app/cloud_two.svg';
   static const String cloudThree = 'assets/images/app/cloud_three.svg';
+  static const String sun = 'assets/images/app/sun.svg';
 }

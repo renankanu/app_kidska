@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:app_kidska/models/numbers.dart';
 import 'package:app_kidska/shared/colors.dart';
 import 'package:app_kidska/shared/components/app_bar.dart';
+import 'package:app_kidska/shared/components/cloud_sun.dart';
 import 'package:app_kidska/shared/images.dart';
 import 'package:app_kidska/shared/sounds.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -112,15 +113,17 @@ class _NumberDetailViewState extends State<NumberDetailView> {
       appBar: const BaseAppBar(),
       body: Stack(
         children: [
-          const Cloud(
+          const CloudSun(
             top: 0,
             left: -20,
             height: 120,
           ),
-          const Cloud(
-            bottom: 0,
+          CloudSun(
+            bottom: 80,
             right: 0,
             height: 120,
+            icon: AppImages.cloudTwo,
+            color: AppColor.malibu.withOpacity(0.5),
           ),
           Align(
             child: Column(
@@ -165,42 +168,6 @@ class _NumberDetailViewState extends State<NumberDetailView> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class Cloud extends StatelessWidget {
-  const Cloud({
-    super.key,
-    this.bottom,
-    this.right,
-    this.left,
-    this.top,
-    this.height = 90,
-  });
-
-  final double? bottom;
-  final double? right;
-  final double? left;
-  final double? top;
-  final double height;
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      bottom: bottom,
-      right: right,
-      left: left,
-      top: top,
-      child: SvgPicture.asset(
-        AppImages.cloudOne,
-        height: height,
-        fit: BoxFit.cover,
-        colorFilter: ColorFilter.mode(
-          AppColor.malibu.withOpacity(0.2),
-          BlendMode.srcIn,
-        ),
       ),
     );
   }

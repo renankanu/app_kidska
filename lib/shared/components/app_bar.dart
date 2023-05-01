@@ -17,6 +17,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
               label!,
               style: const TextStyle(
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             )
           : null,

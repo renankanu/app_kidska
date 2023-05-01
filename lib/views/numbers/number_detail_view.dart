@@ -126,9 +126,12 @@ class _NumberDetailViewState extends State<NumberDetailView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset(
-                  iconByName,
-                  height: height * 0.15,
+                Hero(
+                  tag: widget.number.value,
+                  child: SvgPicture.asset(
+                    iconByName,
+                    height: height * 0.15,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 Text(

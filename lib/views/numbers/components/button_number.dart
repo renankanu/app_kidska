@@ -55,8 +55,8 @@ class ButtonNumber extends StatelessWidget {
             tag: number.value,
             child: SvgPicture.asset(
               iconByName,
-              height: 80,
-              width: 80,
+              height: 60,
+              width: 60,
             ),
           ),
         ),

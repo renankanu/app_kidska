@@ -26,6 +26,7 @@ class NumbersView extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
+                childAspectRatio: 1.5,
               ),
               children: [
                 for (var number in Numbers.values)

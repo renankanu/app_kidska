@@ -135,7 +135,7 @@ class _NumberDetailViewState extends State<NumberDetailView> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  widget.number.name.toUpperCase(),
+                  widget.number.description.toUpperCase(),
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
                 const SizedBox(height: 20),

@@ -31,21 +31,36 @@ class AppRoutes {
           ),
           GoRoute(
             path: '$_numberDetail/:number',
-            builder: (BuildContext context, GoRouterState state) {
-              if (state.params['number'] == null) {
-                return const SizedBox.shrink();
-              }
-              final Numbers number = Numbers.values.firstWhere(
-                (Numbers element) =>
-                    element.value == state.params['number'].toString(),
-              );
-              return NumberDetailView(
-                number: number,
-              );
-            },
+            pageBuilder: (context, state) => CustomTransitionPage<void>(
+              key: state.pageKey,
+              child: NumberDetailView(
+                number: Numbers.values[int.parse(state.params['number']!)],
+              ),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) =>
+                      FadeTransition(opacity: animation, child: child),
+            ),
           ),
         ],
       ),
     ],
   );
+}
+
+class FadeTransitionPage extends CustomTransitionPage<void> {
+  /// Creates a [FadeTransitionPage].
+  FadeTransitionPage({
+    required LocalKey super.key,
+    required super.child,
+  }) : super(
+            transitionsBuilder: (BuildContext context,
+                    Animation<double> animation,
+                    Animation<double> secondaryAnimation,
+                    Widget child) =>
+                FadeTransition(
+                  opacity: animation.drive(_curveTween),
+                  child: child,
+                ));
+
+  static final CurveTween _curveTween = CurveTween(curve: Curves.easeIn);
 }

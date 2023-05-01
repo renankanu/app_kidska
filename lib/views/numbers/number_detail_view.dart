@@ -108,75 +108,96 @@ class _NumberDetailViewState extends State<NumberDetailView> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: AppColor.springWood,
       appBar: const BaseAppBar(),
       body: Stack(
         children: [
-          SvgPicture.asset(
-            AppImages.cloudOne,
+          const Cloud(
+            top: 0,
+            left: -20,
             height: 120,
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              AppColor.malibu.withOpacity(0.3),
-              BlendMode.srcIn,
+          ),
+          const Cloud(
+            bottom: 0,
+            right: 0,
+            height: 120,
+          ),
+          Align(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  iconByName,
+                  height: height * 0.15,
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  widget.number.name.toUpperCase(),
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {
+                    _player.play(AssetSource(getSound));
+                    setState(() {});
+                  },
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      color: AppColor.tradewind,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: FaIcon(
+                        _isPlaying
+                            ? FontAwesomeIcons.pause
+                            : FontAwesomeIcons.play,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                iconByName,
-                height: height * 0.15,
-              ),
-              const SizedBox(height: 20),
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: widget.number.value,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    children: [
-                      const TextSpan(
-                        text: ' = ',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                      TextSpan(
-                        text: widget.number.description.toUpperCase(),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  _player.play(AssetSource(getSound));
-                  setState(() {});
-                },
-                child: Container(
-                  height: 60,
-                  width: 60,
-                  decoration: BoxDecoration(
-                    color: AppColor.tradewind,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Center(
-                    child: FaIcon(
-                      _isPlaying
-                          ? FontAwesomeIcons.pause
-                          : FontAwesomeIcons.play,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
         ],
+      ),
+    );
+  }
+}
+
+class Cloud extends StatelessWidget {
+  const Cloud({
+    super.key,
+    this.bottom,
+    this.right,
+    this.left,
+    this.top,
+    this.height = 90,
+  });
+
+  final double? bottom;
+  final double? right;
+  final double? left;
+  final double? top;
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: bottom,
+      right: right,
+      left: left,
+      top: top,
+      child: SvgPicture.asset(
+        AppImages.cloudOne,
+        height: height,
+        fit: BoxFit.cover,
+        colorFilter: ColorFilter.mode(
+          AppColor.malibu.withOpacity(0.2),
+          BlendMode.srcIn,
+        ),
       ),
     );
   }

@@ -11,7 +11,7 @@ class NumbersView extends StatelessWidget {
   const NumbersView({super.key});
 
   void goToView(BuildContext context, Numbers number) {
-    context.go('${AppRoutes.numberDetail}/${number.value}');
+    context.push('${AppRoutes.numberDetail}/${number.value}');
   }
 
   @override

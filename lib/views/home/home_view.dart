@@ -22,7 +22,7 @@ class HomeView extends StatelessWidget {
                 HomeCard(
                   icon: AppImages.icNumbers,
                   label: 'Números',
-                  onTap: () => context.go(AppRoutes.numbers),
+                  onTap: () => context.push(AppRoutes.numbers),
                 ),
                 HomeCard(
                   icon: AppImages.icLetters,

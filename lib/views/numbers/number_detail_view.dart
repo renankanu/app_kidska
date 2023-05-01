@@ -109,58 +109,73 @@ class _NumberDetailViewState extends State<NumberDetailView> {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: const BaseAppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
           SvgPicture.asset(
-            iconByName,
-            height: height * 0.15,
+            AppImages.cloudOne,
+            height: 120,
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              AppColor.malibu.withOpacity(0.3),
+              BlendMode.srcIn,
+            ),
           ),
-          const SizedBox(height: 20),
-          Center(
-            child: RichText(
-              text: TextSpan(
-                text: widget.number.value,
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-                children: [
-                  const TextSpan(
-                    text: ' = ',
-                    style: TextStyle(
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                iconByName,
+                height: height * 0.15,
+              ),
+              const SizedBox(height: 20),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: widget.number.value,
+                    style: const TextStyle(
+                      fontSize: 20,
                       color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    children: [
+                      const TextSpan(
+                        text: ' = ',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text: widget.number.description.toUpperCase(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  _player.play(AssetSource(getSound));
+                  setState(() {});
+                },
+                child: Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    color: AppColor.tradewind,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Center(
+                    child: FaIcon(
+                      _isPlaying
+                          ? FontAwesomeIcons.pause
+                          : FontAwesomeIcons.play,
+                      color: Colors.white,
                     ),
                   ),
-                  TextSpan(
-                    text: widget.number.description.toUpperCase(),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          GestureDetector(
-            onTap: () {
-              _player.play(AssetSource(getSound));
-              setState(() {});
-            },
-            child: Container(
-              height: 60,
-              width: 60,
-              decoration: BoxDecoration(
-                color: AppColor.tradewind,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Center(
-                child: FaIcon(
-                  _isPlaying ? FontAwesomeIcons.pause : FontAwesomeIcons.play,
-                  color: Colors.white,
                 ),
-              ),
-            ),
-          )
+              )
+            ],
+          ),
         ],
       ),
     );

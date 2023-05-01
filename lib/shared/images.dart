@@ -17,4 +17,7 @@ class AppImages {
   static const String numbersEight = 'assets/images/numbers/number_eight.svg';
   static const String numbersNine = 'assets/images/numbers/number_nine.svg';
   static const String numbersZero = 'assets/images/numbers/number_zero.svg';
+  static const String cloudOne = 'assets/images/app/cloud_one.svg';
+  static const String cloudTwo = 'assets/images/app/cloud_two.svg';
+  static const String cloudThree = 'assets/images/app/cloud_three.svg';
 }

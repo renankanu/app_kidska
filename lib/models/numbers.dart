@@ -14,9 +14,4 @@ enum Numbers {
 
   final String value;
   final String description;
-
-  Numbers getNumber(String number) {
-    return Numbers.values
-        .firstWhere((Numbers element) => element.value == number);
-  }
 }

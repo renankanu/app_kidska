@@ -46,30 +46,26 @@ class NumbersView extends StatelessWidget {
             left: 0,
             height: 100,
           ),
-          Column(
-            children: [
-              Expanded(
-                child: GridView(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 60,
+          Expanded(
+            child: GridView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 60,
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+                childAspectRatio: 1.1,
+              ),
+              children: [
+                for (var number in Numbers.values)
+                  ButtonNumber(
+                    number: number,
+                    onTap: () => goToView(context, number),
                   ),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
-                    childAspectRatio: 1.1,
-                  ),
-                  children: [
-                    for (var number in Numbers.values)
-                      ButtonNumber(
-                        number: number,
-                        onTap: () => goToView(context, number),
-                      ),
-                  ],
-                ),
-              )
-            ],
+              ],
+            ),
           ),
         ],
       ),

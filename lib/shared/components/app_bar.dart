@@ -24,6 +24,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: IconButton(
         icon: const FaIcon(
           FontAwesomeIcons.arrowLeftLong,
+          size: 18,
           color: Colors.black,
         ),
         onPressed: () {

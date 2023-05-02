@@ -27,7 +27,7 @@ class HomeView extends StatelessWidget {
                 HomeCard(
                   icon: AppImages.icLetters,
                   label: 'Letras',
-                  onTap: () {},
+                  onTap: () => context.push(AppRoutes.alphabet),
                 ),
               ],
             ),

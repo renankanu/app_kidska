@@ -29,6 +29,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/numbers/
+    - assets/images/alphabet/
     - assets/images/app/
     - assets/sounds/numbers/
 

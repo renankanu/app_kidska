@@ -109,7 +109,6 @@ class _NumberDetailViewState extends State<NumberDetailView> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: AppColor.springWood,
       appBar: const BaseAppBar(),
       body: Stack(
         children: [

@@ -1,13 +1,18 @@
+import 'dart:async';
+
 import 'package:app_kidska/models/alphabet.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../shared/colors.dart';
 import '../../shared/components/app_bar.dart';
 import '../../shared/components/cloud_sun.dart';
 import '../../shared/images.dart';
+import '../../shared/sounds.dart';
 
-class AlphabetDetailView extends StatelessWidget {
+class AlphabetDetailView extends StatefulWidget {
   const AlphabetDetailView({
     super.key,
     required this.alphabet,
@@ -15,8 +20,40 @@ class AlphabetDetailView extends StatelessWidget {
 
   final Alphabet alphabet;
 
+  @override
+  State<AlphabetDetailView> createState() => _AlphabetDetailViewState();
+}
+
+class _AlphabetDetailViewState extends State<AlphabetDetailView> {
+  final _player = AudioPlayer();
+  bool _isPlaying = false;
+  StreamSubscription<PlayerState>? _playerListener;
+
+  @override
+  void initState() {
+    _playerListener = _player.onPlayerStateChanged.listen((event) {
+      if (event == PlayerState.playing) {
+        setState(() {
+          _isPlaying = true;
+        });
+      } else {
+        setState(() {
+          _isPlaying = false;
+        });
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _playerListener?.cancel();
+    _player.dispose();
+    super.dispose();
+  }
+
   String get iconByName {
-    switch (alphabet) {
+    switch (widget.alphabet) {
       case Alphabet.a:
         return AppImages.a;
       case Alphabet.b:
@@ -74,6 +111,65 @@ class AlphabetDetailView extends StatelessWidget {
     }
   }
 
+  String get _getSong {
+    switch (widget.alphabet) {
+      case Alphabet.a:
+        return AppSounds.a;
+      case Alphabet.b:
+        return AppSounds.b;
+      case Alphabet.c:
+        return AppSounds.c;
+      case Alphabet.d:
+        return AppSounds.d;
+      case Alphabet.e:
+        return AppSounds.e;
+      case Alphabet.f:
+        return AppSounds.f;
+      case Alphabet.g:
+        return AppSounds.g;
+      case Alphabet.h:
+        return AppSounds.h;
+      case Alphabet.i:
+        return AppSounds.i;
+      case Alphabet.j:
+        return AppSounds.j;
+      case Alphabet.k:
+        return AppSounds.k;
+      case Alphabet.l:
+        return AppSounds.l;
+      case Alphabet.m:
+        return AppSounds.m;
+      case Alphabet.n:
+        return AppSounds.n;
+      case Alphabet.o:
+        return AppSounds.o;
+      case Alphabet.p:
+        return AppSounds.p;
+      case Alphabet.q:
+        return AppSounds.q;
+      case Alphabet.r:
+        return AppSounds.r;
+      case Alphabet.s:
+        return AppSounds.s;
+      case Alphabet.t:
+        return AppSounds.t;
+      case Alphabet.u:
+        return AppSounds.u;
+      case Alphabet.v:
+        return AppSounds.v;
+      case Alphabet.w:
+        return AppSounds.w;
+      case Alphabet.x:
+        return AppSounds.x;
+      case Alphabet.y:
+        return AppSounds.y;
+      case Alphabet.z:
+        return AppSounds.z;
+      default:
+        return AppSounds.a;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -98,7 +194,7 @@ class AlphabetDetailView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Hero(
-                  tag: alphabet,
+                  tag: widget.alphabet,
                   child: SvgPicture.asset(
                     iconByName,
                     height: height * 0.25,
@@ -106,10 +202,35 @@ class AlphabetDetailView extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  alphabet.letterOf,
+                  widget.alphabet.letterOf,
                   style: const TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {
+                    _isPlaying
+                        ? _player.stop()
+                        : _player.play(AssetSource(_getSong));
+                    setState(() {});
+                  },
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      color: AppColor.tradewind,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: FaIcon(
+                        _isPlaying
+                            ? FontAwesomeIcons.pause
+                            : FontAwesomeIcons.play,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ],

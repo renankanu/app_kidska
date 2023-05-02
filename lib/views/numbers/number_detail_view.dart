@@ -78,7 +78,7 @@ class _NumberDetailViewState extends State<NumberDetailView> {
     }
   }
 
-  String get getSound {
+  String get getSong {
     switch (widget.number) {
       case Numbers.zero:
         return AppSounds.zero;
@@ -146,7 +146,9 @@ class _NumberDetailViewState extends State<NumberDetailView> {
                 const SizedBox(height: 20),
                 GestureDetector(
                   onTap: () {
-                    _player.play(AssetSource(getSound));
+                    _isPlaying
+                        ? _player.stop()
+                        : _player.play(AssetSource(getSong));
                     setState(() {});
                   },
                   child: Container(

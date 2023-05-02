@@ -47,7 +47,7 @@ class _NumberDetailViewState extends State<NumberDetailView> {
   @override
   Future<void> dispose() async {
     _playerListener?.cancel();
-    _player.dispose();
+    _player.release();
     super.dispose();
   }
 

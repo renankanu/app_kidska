@@ -47,8 +47,10 @@ class _AlphabetDetailViewState extends State<AlphabetDetailView> {
 
   @override
   void dispose() {
-    _playerListener?.cancel();
-    _player.dispose();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _playerListener?.cancel();
+      _player.release();
+    });
     super.dispose();
   }
 

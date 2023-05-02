@@ -25,9 +25,17 @@ class AppRoutes {
         routes: <RouteBase>[
           GoRoute(
             path: _numbers,
-            builder: (BuildContext context, GoRouterState state) {
-              return const NumbersView();
-            },
+            pageBuilder: (context, state) => CustomTransitionPage<void>(
+              key: state.pageKey,
+              child: const NumbersView(),
+              transitionsBuilder: (_, animation, __, child) => SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(0, 1),
+                  end: Offset.zero,
+                ).animate(animation),
+                child: child,
+              ),
+            ),
           ),
           GoRoute(
             path: '$_numberDetail/:number',

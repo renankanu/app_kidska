@@ -17,27 +17,27 @@ class ButtonNumber extends StatelessWidget {
   String get iconByName {
     switch (number) {
       case Numbers.zero:
-        return AppImages.numbersZero;
+        return AppImages.zero;
       case Numbers.one:
-        return AppImages.numbersOne;
+        return AppImages.one;
       case Numbers.two:
-        return AppImages.numbersTwo;
+        return AppImages.two;
       case Numbers.three:
-        return AppImages.numbersThree;
+        return AppImages.three;
       case Numbers.four:
-        return AppImages.numbersFour;
+        return AppImages.four;
       case Numbers.five:
-        return AppImages.numbersFive;
+        return AppImages.five;
       case Numbers.six:
-        return AppImages.numbersSix;
+        return AppImages.six;
       case Numbers.seven:
-        return AppImages.numbersSeven;
+        return AppImages.seven;
       case Numbers.eight:
-        return AppImages.numbersEight;
+        return AppImages.eight;
       case Numbers.nine:
-        return AppImages.numbersNine;
+        return AppImages.nine;
       default:
-        return AppImages.numbersZero;
+        return AppImages.zero;
     }
   }
 
@@ -45,27 +45,10 @@ class ButtonNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 10,
-              offset: Offset(0, 5),
-            ),
-          ],
-        ),
-        child: Center(
-          child: Hero(
-            tag: number.value,
-            child: SvgPicture.asset(
-              iconByName,
-              height: 60,
-              width: 60,
-            ),
-          ),
+      child: Hero(
+        tag: number.value,
+        child: SvgPicture.asset(
+          iconByName,
         ),
       ),
     );

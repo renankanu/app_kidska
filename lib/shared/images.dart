@@ -7,16 +7,16 @@ class AppImages {
   static const String icColors = 'assets/icons/ic_colors.svg';
 
   // images
-  static const String numbersOne = 'assets/images/numbers/number_one.svg';
-  static const String numbersTwo = 'assets/images/numbers/number_two.svg';
-  static const String numbersThree = 'assets/images/numbers/number_three.svg';
-  static const String numbersFour = 'assets/images/numbers/number_four.svg';
-  static const String numbersFive = 'assets/images/numbers/number_five.svg';
-  static const String numbersSix = 'assets/images/numbers/number_six.svg';
-  static const String numbersSeven = 'assets/images/numbers/number_seven.svg';
-  static const String numbersEight = 'assets/images/numbers/number_eight.svg';
-  static const String numbersNine = 'assets/images/numbers/number_nine.svg';
-  static const String numbersZero = 'assets/images/numbers/number_zero.svg';
+  static const String zero = 'assets/images/numbers/zero.svg';
+  static const String one = 'assets/images/numbers/one.svg';
+  static const String two = 'assets/images/numbers/two.svg';
+  static const String three = 'assets/images/numbers/three.svg';
+  static const String four = 'assets/images/numbers/four.svg';
+  static const String five = 'assets/images/numbers/five.svg';
+  static const String six = 'assets/images/numbers/six.svg';
+  static const String seven = 'assets/images/numbers/seven.svg';
+  static const String eight = 'assets/images/numbers/eight.svg';
+  static const String nine = 'assets/images/numbers/nine.svg';
   static const String cloudOne = 'assets/images/app/cloud_one.svg';
   static const String cloudTwo = 'assets/images/app/cloud_two.svg';
   static const String cloudThree = 'assets/images/app/cloud_three.svg';

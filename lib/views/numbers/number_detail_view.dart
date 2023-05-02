@@ -54,27 +54,27 @@ class _NumberDetailViewState extends State<NumberDetailView> {
   String get iconByName {
     switch (widget.number) {
       case Numbers.zero:
-        return AppImages.numbersZero;
+        return AppImages.zero;
       case Numbers.one:
-        return AppImages.numbersOne;
+        return AppImages.one;
       case Numbers.two:
-        return AppImages.numbersTwo;
+        return AppImages.two;
       case Numbers.three:
-        return AppImages.numbersThree;
+        return AppImages.three;
       case Numbers.four:
-        return AppImages.numbersFour;
+        return AppImages.four;
       case Numbers.five:
-        return AppImages.numbersFive;
+        return AppImages.five;
       case Numbers.six:
-        return AppImages.numbersSix;
+        return AppImages.six;
       case Numbers.seven:
-        return AppImages.numbersSeven;
+        return AppImages.seven;
       case Numbers.eight:
-        return AppImages.numbersEight;
+        return AppImages.eight;
       case Numbers.nine:
-        return AppImages.numbersNine;
+        return AppImages.nine;
       default:
-        return AppImages.numbersZero;
+        return AppImages.zero;
     }
   }
 
@@ -133,13 +133,16 @@ class _NumberDetailViewState extends State<NumberDetailView> {
                   tag: widget.number.value,
                   child: SvgPicture.asset(
                     iconByName,
-                    height: height * 0.15,
+                    height: height * 0.3,
                   ),
                 ),
                 const SizedBox(height: 20),
                 Text(
                   widget.number.description.toUpperCase(),
-                  style: Theme.of(context).textTheme.displayMedium,
+                  style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 32,
+                      ),
                 ),
                 const SizedBox(height: 20),
                 GestureDetector(

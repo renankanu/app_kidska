@@ -40,7 +40,7 @@ class HomeView extends StatelessWidget {
                   label: 'Animais',
                   height: 60,
                   width: 60,
-                  onTap: () {},
+                  onTap: () => context.push(AppRoutes.animals),
                 ),
                 HomeCard(
                   icon: AppImages.icColors,

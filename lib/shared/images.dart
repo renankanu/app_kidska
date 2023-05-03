@@ -47,4 +47,13 @@ class AppImages {
   static const String cloudTwo = 'assets/images/app/cloud_two.svg';
   static const String cloudThree = 'assets/images/app/cloud_three.svg';
   static const String sun = 'assets/images/app/sun.svg';
+  static const String tree = 'assets/images/app/tree.svg';
+  static const String dog = 'assets/images/animals/dog.svg';
+  static const String cat = 'assets/images/animals/cat.svg';
+  static const String cow = 'assets/images/animals/cow.svg';
+  static const String elephant = 'assets/images/animals/elephant.svg';
+  static const String horse = 'assets/images/animals/horse.svg';
+  static const String duck = 'assets/images/animals/duck.svg';
+  static const String lion = 'assets/images/animals/lion.svg';
+  static const String chicken = 'assets/images/animals/chicken.svg';
 }

@@ -8,4 +8,5 @@ class AppColor {
   static const Color malibu = Color(0xFF70BCFF);
   static const Color curiousBlue = Color(0xFF258ACB);
   static const Color springWood = Color(0xFFF5F0ED);
+  static const Color hitPink = Color(0xFFFFAC81);
 }

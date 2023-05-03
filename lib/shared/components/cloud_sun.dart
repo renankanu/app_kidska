@@ -13,6 +13,7 @@ class CloudSun extends StatelessWidget {
     this.height = 90,
     this.icon = AppImages.cloudOne,
     this.color,
+    this.opacity = 1,
   });
 
   final double? bottom;
@@ -22,6 +23,7 @@ class CloudSun extends StatelessWidget {
   final double height;
   final String icon;
   final Color? color;
+  final double opacity;
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +32,19 @@ class CloudSun extends StatelessWidget {
       right: right,
       left: left,
       top: top,
-      child: SvgPicture.asset(
-        icon,
-        height: height,
-        fit: BoxFit.cover,
-        colorFilter: color != null
-            ? ColorFilter.mode(
-                color!,
-                BlendMode.srcIn,
-              )
-            : null,
+      child: Opacity(
+        opacity: opacity,
+        child: SvgPicture.asset(
+          icon,
+          height: height,
+          fit: BoxFit.cover,
+          colorFilter: color != null
+              ? ColorFilter.mode(
+                  color!,
+                  BlendMode.srcIn,
+                )
+              : null,
+        ),
       ),
     );
   }

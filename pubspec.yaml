@@ -30,9 +30,11 @@ flutter:
     - assets/icons/
     - assets/images/numbers/
     - assets/images/alphabet/
+    - assets/images/animals/
     - assets/images/app/
     - assets/sounds/numbers/
     - assets/sounds/alphabet/
+    - assets/sounds/animals/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

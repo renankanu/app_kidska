@@ -38,4 +38,13 @@ class AppSounds {
   static const String x = 'sounds/alphabet/letter_x.mp3';
   static const String y = 'sounds/alphabet/letter_y.mp3';
   static const String z = 'sounds/alphabet/letter_z.mp3';
+
+  static const String cat = 'sounds/animals/cat.mp3';
+  static const String dog = 'sounds/animals/dog.mp3';
+  static const String cow = 'sounds/animals/cow.mp3';
+  static const String duck = 'sounds/animals/duck.mp3';
+  static const String elephant = 'sounds/animals/elephant.mp3';
+  static const String horse = 'sounds/animals/horse.mp3';
+  static const String lion = 'sounds/animals/lion.mp3';
+  static const String chicken = 'sounds/animals/chicken.mp3';
 }

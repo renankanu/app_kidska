@@ -19,11 +19,13 @@ class HomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cardHeight = MediaQuery.of(context).size.height;
+    final cardWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 206,
-        width: 172,
+        height: cardHeight * 0.22,
+        width: cardWidth * 0.43,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),

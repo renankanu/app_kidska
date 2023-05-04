@@ -1,8 +1,10 @@
 import 'package:app_kidska/models/alphabet.dart';
+import 'package:app_kidska/models/colors.dart';
 import 'package:app_kidska/models/numbers.dart';
 import 'package:app_kidska/views/alphabet/alphabet_detail_view.dart';
 import 'package:app_kidska/views/animals/animal_detail_view.dart';
 import 'package:app_kidska/views/animals/animals_view.dart';
+import 'package:app_kidska/views/colors/colors_view.dart';
 import 'package:app_kidska/views/home/home_view.dart';
 import 'package:app_kidska/views/numbers/number_detail_view.dart';
 import 'package:app_kidska/views/numbers/numbers_view.dart';
@@ -11,6 +13,7 @@ import 'package:go_router/go_router.dart';
 
 import '../models/animals.dart';
 import '../views/alphabet/alphabet_view.dart';
+import '../views/colors/colors_details_view.dart';
 
 class AppRoutes {
   AppRoutes._();
@@ -22,6 +25,8 @@ class AppRoutes {
   static const String _alphabetDetail = 'alphabet_detail';
   static const String _animals = 'animals';
   static const String _animalDetail = 'animal_detail';
+  static const String _colors = 'colors';
+  static const String _colorsDetail = 'colors_detail';
 
   static const String numbers = '/$_numbers';
   static const String numberDetail = '/$_numberDetail';
@@ -29,6 +34,8 @@ class AppRoutes {
   static const String alphabetDetail = '/$_alphabetDetail';
   static const String animals = '/$_animals';
   static const String animalDetail = '/$_animalDetail';
+  static const String colors = '/$_colors';
+  static const String colorsDetail = '/$_colorsDetail';
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
@@ -111,6 +118,33 @@ class AppRoutes {
               child: AnimalDetailView(
                 animals: Animals.values.firstWhere(
                   (element) => element.description == state.params['animal'],
+                ),
+              ),
+              transitionsBuilder: (_, animation, __, child) =>
+                  FadeTransition(opacity: animation, child: child),
+            ),
+          ),
+          GoRoute(
+            path: _colors,
+            pageBuilder: (context, state) => CustomTransitionPage<void>(
+              key: state.pageKey,
+              child: const ColorsView(),
+              transitionsBuilder: (_, animation, __, child) => SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(0, 1),
+                  end: Offset.zero,
+                ).animate(animation),
+                child: child,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '$_colorsDetail/:color',
+            pageBuilder: (context, state) => CustomTransitionPage<void>(
+              key: state.pageKey,
+              child: ColorsDetailView(
+                color: ModelColors.values.firstWhere(
+                  (element) => element.description == state.params['color'],
                 ),
               ),
               transitionsBuilder: (_, animation, __, child) =>

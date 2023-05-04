@@ -9,7 +9,8 @@ import 'package:app_kidska/shared/sounds.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../shared/components/audio_button.dart';
 
 class NumberDetailView extends StatefulWidget {
   const NumberDetailView({
@@ -78,7 +79,7 @@ class _NumberDetailViewState extends State<NumberDetailView> {
     }
   }
 
-  String get getSong {
+  String get _getSong {
     switch (widget.number) {
       case Numbers.zero:
         return AppSounds.zero;
@@ -144,29 +145,15 @@ class _NumberDetailViewState extends State<NumberDetailView> {
                       ),
                 ),
                 const SizedBox(height: 20),
-                GestureDetector(
+                AudioButton(
                   onTap: () {
                     _isPlaying
                         ? _player.stop()
-                        : _player.play(AssetSource(getSong));
+                        : _player.play(AssetSource(_getSong));
                     setState(() {});
                   },
-                  child: Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: AppColor.tradewind,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Center(
-                      child: FaIcon(
-                        _isPlaying
-                            ? FontAwesomeIcons.pause
-                            : FontAwesomeIcons.play,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                  isPlaying: _isPlaying,
+                  buttonColor: AppColor.tradewind,
                 ),
               ],
             ),

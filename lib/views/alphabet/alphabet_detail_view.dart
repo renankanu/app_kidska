@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:app_kidska/models/alphabet.dart';
+import 'package:app_kidska/shared/components/audio_button.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../shared/colors.dart';
 import '../../shared/components/app_bar.dart';
@@ -211,29 +211,15 @@ class _AlphabetDetailViewState extends State<AlphabetDetailView> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                GestureDetector(
+                AudioButton(
                   onTap: () {
                     _isPlaying
                         ? _player.stop()
                         : _player.play(AssetSource(_getSong));
                     setState(() {});
                   },
-                  child: Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: AppColor.tradewind,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Center(
-                      child: FaIcon(
-                        _isPlaying
-                            ? FontAwesomeIcons.pause
-                            : FontAwesomeIcons.play,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                  isPlaying: _isPlaying,
+                  buttonColor: AppColor.tradewind,
                 ),
               ],
             ),

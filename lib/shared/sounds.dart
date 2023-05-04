@@ -47,4 +47,13 @@ class AppSounds {
   static const String horse = 'sounds/animals/horse.mp3';
   static const String lion = 'sounds/animals/lion.mp3';
   static const String chicken = 'sounds/animals/chicken.mp3';
+
+  static const String blue = 'sounds/colors/blue.mp3';
+  static const String black = 'sounds/colors/black.mp3';
+  static const String brown = 'sounds/colors/brown.mp3';
+  static const String green = 'sounds/colors/green.mp3';
+  static const String orange = 'sounds/colors/orange.mp3';
+  static const String pink = 'sounds/colors/pink.mp3';
+  static const String red = 'sounds/colors/red.mp3';
+  static const String yellow = 'sounds/colors/yellow.mp3';
 }

@@ -45,7 +45,7 @@ class HomeView extends StatelessWidget {
                 HomeCard(
                   icon: AppImages.icColors,
                   label: 'Cores',
-                  onTap: () {},
+                  onTap: () => context.push(AppRoutes.colors),
                 ),
               ],
             ),

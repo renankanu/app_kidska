@@ -5,9 +5,9 @@ import 'package:app_kidska/shared/components/app_bar.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../shared/colors.dart';
+import '../../shared/components/audio_button.dart';
 import '../../shared/components/cloud_sun.dart';
 import '../../shared/images.dart';
 import '../../shared/sounds.dart';
@@ -141,29 +141,15 @@ class _AnimalDetailViewState extends State<AnimalDetailView> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                GestureDetector(
+                AudioButton(
                   onTap: () {
                     _isPlaying
                         ? _player.stop()
                         : _player.play(AssetSource(_getSong));
                     setState(() {});
                   },
-                  child: Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: AppColor.hitPink,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Center(
-                      child: FaIcon(
-                        _isPlaying
-                            ? FontAwesomeIcons.pause
-                            : FontAwesomeIcons.play,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                  isPlaying: _isPlaying,
+                  buttonColor: AppColor.hitPink,
                 ),
               ],
             ),

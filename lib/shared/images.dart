@@ -56,4 +56,5 @@ class AppImages {
   static const String duck = 'assets/images/animals/duck.svg';
   static const String lion = 'assets/images/animals/lion.svg';
   static const String chicken = 'assets/images/animals/chicken.svg';
+  static const String bgColor = 'assets/images/app/bg_color.svg';
 }

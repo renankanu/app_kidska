@@ -48,7 +48,9 @@ class AnimalsView extends StatelessWidget {
             children: [
               for (var animal in Animals.values)
                 ButtonAnimal(
-                    animals: animal, onTap: () => goToView(context, animal))
+                  animals: animal,
+                  onTap: () => goToView(context, animal),
+                )
             ],
           ),
         ],

@@ -5,6 +5,7 @@ class AppImages {
   static const String icLetters = 'assets/icons/ic_letters.svg';
   static const String icDog = 'assets/icons/ic_dog.svg';
   static const String icColors = 'assets/icons/ic_colors.svg';
+  static const String appIcon = 'assets/icons/splash.png';
 
   // images
   static const String zero = 'assets/images/numbers/zero.svg';
@@ -48,6 +49,9 @@ class AppImages {
   static const String cloudThree = 'assets/images/app/cloud_three.svg';
   static const String sun = 'assets/images/app/sun.svg';
   static const String tree = 'assets/images/app/tree.svg';
+  static const String cloud00 = 'assets/images/app/cloud_00.svg';
+  static const String cloud01 = 'assets/images/app/cloud_01.svg';
+  static const String cloud02 = 'assets/images/app/cloud_02.svg';
   static const String dog = 'assets/images/animals/dog.svg';
   static const String cat = 'assets/images/animals/cat.svg';
   static const String cow = 'assets/images/animals/cow.svg';

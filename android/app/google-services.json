@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "730258703828",
+    "project_id": "kidska-85e54",
+    "storage_bucket": "kidska-85e54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730258703828:android:679db80ae2c4932483c241",
+        "android_client_info": {
+          "package_name": "br.com.renankanu.app_kidska"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730258703828-p055aou4teal3rgh07brjma71m18ui11.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAumljd_TFU5oLeR2AhNXwR630NRNvr1uQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "730258703828-p055aou4teal3rgh07brjma71m18ui11.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

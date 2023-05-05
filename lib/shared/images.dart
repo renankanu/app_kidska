@@ -6,6 +6,7 @@ class AppImages {
   static const String icDog = 'assets/icons/ic_dog.svg';
   static const String icColors = 'assets/icons/ic_colors.svg';
   static const String appIcon = 'assets/icons/splash.png';
+  static const String icMic = 'assets/icons/ic_mic.svg';
 
   // images
   static const String zero = 'assets/images/numbers/zero.svg';

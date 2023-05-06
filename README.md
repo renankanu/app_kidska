@@ -3,7 +3,7 @@
 A new Flutter project.
 
 ## Nomes das Histórias
-- Tino, o tatu corajoso
+- Tino, o tatu corajoso(tino_the_brave_armadillo)
 - O Mapa Misterioso: A Jornada da Coragem e da Amizade
 - Simon, o Caracol Corajoso
 - Benny, o Coelho Aventureiro

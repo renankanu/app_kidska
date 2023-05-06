@@ -17,6 +17,7 @@ dependencies:
   audioplayers: ^4.0.1
   google_fonts: ^4.0.4
   firebase_core: ^2.11.0
+  firebase_crashlytics: ^3.2.0
 
 dev_dependencies:
   flutter_test:

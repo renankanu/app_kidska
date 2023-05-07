@@ -1,22 +1,22 @@
 import 'package:app_kidska/routes/app_routes.dart';
 import 'package:app_kidska/shared/themes.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:app_kidska/shared/utils/init_config.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'firebase_options.dart';
-import 'shared/utils/crashlytics_utils.dart';
+import 'controllers/stories_controller.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  await InitConfig.all();
 
-  Future.wait([
-    Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => StoriesController()),
+      ],
+      child: const MyApp(),
     ),
-    initCrashlyticsError(),
-  ]);
-
-  runApp(const MyApp());
+  );
 }
 
 class MyApp extends StatelessWidget {

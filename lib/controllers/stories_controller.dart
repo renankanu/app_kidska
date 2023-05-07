@@ -10,6 +10,8 @@ class StoriesController extends ChangeNotifier {
   bool isLoading = false;
   bool isLogged = false;
   final List<Stories> _stories = [];
+  Stories? selectedStory;
+
   UnmodifiableListView<Stories> get stories => UnmodifiableListView(_stories);
 
   final databaseReference = FirebaseDatabase.instance.ref();
@@ -56,5 +58,10 @@ class StoriesController extends ChangeNotifier {
     } on Exception catch (e) {
       log(e.toString());
     }
+  }
+
+  void selectStory(Stories story) {
+    selectedStory = story;
+    notifyListeners();
   }
 }

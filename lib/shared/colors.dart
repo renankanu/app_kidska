@@ -10,4 +10,6 @@ class AppColor {
   static const Color springWood = Color(0xFFF5F0ED);
   static const Color hitPink = Color(0xFFFFAC81);
   static const Color darkFern = Color(0xFF0B5D1E);
+  static const Color celeste = Color(0xFFCECEC9);
+  static const Color mandy = Color(0xFFEA5656);
 }

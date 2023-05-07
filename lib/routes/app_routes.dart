@@ -8,6 +8,7 @@ import 'package:app_kidska/views/colors/colors_view.dart';
 import 'package:app_kidska/views/home/home_view.dart';
 import 'package:app_kidska/views/numbers/number_detail_view.dart';
 import 'package:app_kidska/views/numbers/numbers_view.dart';
+import 'package:app_kidska/views/stories/stories_detail_view.dart';
 import 'package:app_kidska/views/stories/stories_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -29,6 +30,7 @@ class AppRoutes {
   static const String _colors = 'colors';
   static const String _colorsDetail = 'colors_detail';
   static const String _stories = 'stories';
+  static const String _storiesDetail = 'storiesDetail';
 
   static const String numbers = '/$_numbers';
   static const String numberDetail = '/$_numberDetail';
@@ -39,6 +41,7 @@ class AppRoutes {
   static const String colors = '/$_colors';
   static const String colorsDetail = '/$_colorsDetail';
   static const String stories = '/$_stories';
+  static const String storiesDetail = '/$_storiesDetail';
 
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
@@ -169,6 +172,15 @@ class AppRoutes {
             ),
           ),
         ],
+      ),
+      GoRoute(
+        path: storiesDetail,
+        pageBuilder: (context, state) => CustomTransitionPage<void>(
+          key: state.pageKey,
+          child: const StoriesDetailView(),
+          transitionsBuilder: (_, animation, __, child) =>
+              FadeTransition(opacity: animation, child: child),
+        ),
       ),
     ],
   );

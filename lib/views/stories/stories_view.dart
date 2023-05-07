@@ -1,4 +1,6 @@
+import 'package:app_kidska/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../controllers/stories_controller.dart';
@@ -58,47 +60,53 @@ class _StoriesViewState extends State<StoriesView> {
           ),
           itemBuilder: (context, index) {
             final story = storiesController.stories[index];
-            return SizedBox(
-              width: 120,
-              height: 120,
-              child: Stack(
-                children: [
-                  AppCachedImage(
-                    imageUrl: story.image,
-                    radius: 10,
-                    fit: BoxFit.fill,
-                  ),
-                  const SizedBox(height: 10),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(vertical: 5),
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(10),
-                          bottomRight: Radius.circular(10),
+            return GestureDetector(
+              onTap: () {
+                storiesController.selectStory(story);
+                context.push(AppRoutes.storiesDetail);
+              },
+              child: SizedBox(
+                width: 120,
+                height: 120,
+                child: Stack(
+                  children: [
+                    AppCachedImage(
+                      imageUrl: story.image,
+                      radius: 10,
+                      fit: BoxFit.fill,
+                    ),
+                    const SizedBox(height: 10),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(10),
+                          ),
+                          color: Colors.black54,
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.black54,
+                              Colors.black,
+                            ],
+                          ),
                         ),
-                        color: Colors.black54,
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.black54,
-                            Colors.black,
-                          ],
-                        ),
-                      ),
-                      child: Text(
-                        story.name,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.white,
+                        child: Text(
+                          story.name,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:app_kidska/controllers/stories_controller.dart';
 import 'package:app_kidska/shared/colors.dart';
@@ -74,6 +75,9 @@ class _StoriesDetailViewState extends State<StoriesDetailView> {
           final story = storiesController.selectedStory;
           final isFirst = storiesController.isFirst;
           final isLast = storiesController.isLast;
+          _getDuration();
+          log('isFirst: $isFirst');
+          log('isLast: $isLast');
           return SingleChildScrollView(
             child: Column(
               children: [

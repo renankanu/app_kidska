@@ -14,6 +14,7 @@ abstract class Routes {
   static const colors = _Paths.colors;
   static const colorsDetail = _Paths.colorsDetail;
   static const stories = _Paths.stories;
+  static const storiesDetail = _Paths.storiesDetail;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const colors = '/colors';
   static const colorsDetail = '/colors-detail';
   static const stories = '/stories';
+  static const storiesDetail = '/stories-detail';
 }

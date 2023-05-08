@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 
 import '../modules/colors/colors_view.dart';
 import '../modules/home/home_view.dart';
+import '../modules/stories/views/stories_detail_view.dart';
 import '../modules/stories/views/stories_view.dart';
 
 part 'app_routes.dart';
@@ -59,6 +60,11 @@ class AppPages {
     GetPage(
       name: _Paths.stories,
       page: () => const StoriesView(),
+      binding: StoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.storiesDetail,
+      page: () => const StoriesDetailView(),
       binding: StoryBinding(),
     ),
   ];

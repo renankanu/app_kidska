@@ -24,6 +24,7 @@ dependencies:
   cached_network_image: ^3.2.3
   just_audio: ^0.9.32
   get: ^4.6.5
+  lottie: ^2.3.2
 
 dev_dependencies:
   flutter_test:

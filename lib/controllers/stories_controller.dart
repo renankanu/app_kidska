@@ -11,6 +11,8 @@ class StoriesController extends ChangeNotifier {
   bool isLogged = false;
   final List<Stories> _stories = [];
   Stories? selectedStory;
+  bool isFirst = true;
+  bool isLast = false;
 
   UnmodifiableListView<Stories> get stories => UnmodifiableListView(_stories);
 
@@ -61,7 +63,40 @@ class StoriesController extends ChangeNotifier {
   }
 
   void selectStory(Stories story) {
+    final index = _stories.indexOf(story);
+    if (index == 0) {
+      isFirst = true;
+    }
+    if (index == _stories.length - 1) {
+      isLast = true;
+    }
     selectedStory = story;
+    notifyListeners();
+  }
+
+  void nextStory() {
+    if (selectedStory == null) {
+      return;
+    }
+    final index = _stories.indexOf(selectedStory!);
+    if (index == _stories.length - 1) {
+      isLast = true;
+      return;
+    }
+    selectedStory = _stories[index + 1];
+    notifyListeners();
+  }
+
+  void previousStory() {
+    if (selectedStory == null) {
+      return;
+    }
+    final index = _stories.indexOf(selectedStory!);
+    if (index == 0) {
+      isFirst = true;
+      return;
+    }
+    selectedStory = _stories[index - 1];
     notifyListeners();
   }
 }

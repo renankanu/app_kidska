@@ -1,4 +1,5 @@
 import 'package:app_kidska/routes/app_routes.dart';
+import 'package:app_kidska/shared/components/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -28,8 +29,6 @@ class _StoriesViewState extends State<StoriesView> {
   }
 
   Widget _renderBody() {
-    final paddingTop = MediaQuery.of(context).padding.top;
-
     if (isLoading) {
       return const Center(
         child: CircularProgressIndicator(),
@@ -51,7 +50,7 @@ class _StoriesViewState extends State<StoriesView> {
     return Consumer<StoriesController>(
       builder: (context, storiesController, _) {
         return GridView.builder(
-          padding: EdgeInsets.fromLTRB(20, 20 + paddingTop, 20, 0),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
           itemCount: storiesController.stories.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -122,6 +121,7 @@ class _StoriesViewState extends State<StoriesView> {
     stories = context.watch<StoriesController>().stories;
 
     return Scaffold(
+      appBar: const BaseAppBar(),
       body: _renderBody(),
     );
   }

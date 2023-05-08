@@ -21,7 +21,6 @@ class _StoriesDetailViewState extends State<StoriesDetailView> {
   final AudioPlayer _player = AudioPlayer();
   Duration _duration = Duration.zero;
   Duration _position = Duration.zero;
-  final bool _isPlaying = false;
   StreamSubscription<PlayerState>? _playerListener;
 
   @override
@@ -73,13 +72,15 @@ class _StoriesDetailViewState extends State<StoriesDetailView> {
       body: Consumer<StoriesController>(
         builder: (context, storiesController, _) {
           final story = storiesController.selectedStory;
+          final isFirst = storiesController.isFirst;
+          final isLast = storiesController.isLast;
           return SingleChildScrollView(
             child: Column(
               children: [
                 Center(
                   child: AppCachedImage(
-                    height: size.height * 0.3,
-                    width: size.width * 0.8,
+                    height: size.height * 0.4,
+                    width: size.width * 0.9,
                     radius: 10,
                     imageUrl: story!.image,
                   ),
@@ -103,13 +104,16 @@ class _StoriesDetailViewState extends State<StoriesDetailView> {
                     thumbShape: RoundSliderThumbShape(enabledThumbRadius: 6),
                     overlayShape: RoundSliderOverlayShape(overlayRadius: 10),
                   ),
-                  child: Slider(
-                    value: _getValueSlider,
-                    onChanged: (value) {},
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Slider(
+                      value: _getValueSlider,
+                      onChanged: (value) {},
+                    ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 14),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -123,16 +127,21 @@ class _StoriesDetailViewState extends State<StoriesDetailView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GestureDetector(
-                      onTap: () {},
-                      child: const Icon(
+                      onTap: () {
+                        if (!isFirst) {
+                          storiesController.previousStory();
+                        }
+                      },
+                      child: Icon(
                         Icons.skip_previous,
+                        color: isFirst ? Colors.grey : AppColor.mandy,
                         size: 24,
                       ),
                     ),
                     const SizedBox(width: 20),
                     GestureDetector(
                       onTap: () {
-                        if (_isPlaying) {
+                        if (_player.playerState.playing) {
                           _player.pause();
                         } else {
                           _player.play();
@@ -145,7 +154,7 @@ class _StoriesDetailViewState extends State<StoriesDetailView> {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8),
-                          child: _isPlaying
+                          child: _player.playerState.playing
                               ? const Icon(
                                   Icons.pause,
                                   size: 24,
@@ -161,9 +170,10 @@ class _StoriesDetailViewState extends State<StoriesDetailView> {
                     ),
                     const SizedBox(width: 20),
                     GestureDetector(
-                      onTap: () {},
-                      child: const Icon(
+                      onTap: () => storiesController.nextStory(),
+                      child: Icon(
                         Icons.skip_next,
+                        color: isLast ? Colors.grey : AppColor.mandy,
                         size: 24,
                       ),
                     ),

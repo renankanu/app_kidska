@@ -1,33 +1,17 @@
-import 'package:app_kidska/routes/app_routes.dart';
-import 'package:app_kidska/shared/themes.dart';
-import 'package:app_kidska/shared/utils/init_config.dart';
+import 'package:app_kidska/app/shared/themes.dart';
+import 'package:app_kidska/app/shared/utils/init_config.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/route_manager.dart';
 
-import 'controllers/stories_controller.dart';
+import 'app/routes/app_pages.dart';
 
 void main() async {
   await InitConfig.all();
 
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => StoriesController()),
-      ],
-      child: const MyApp(),
-    ),
-  );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'KIDSKA',
-      routerConfig: AppRoutes.router,
-      theme: AppTheme.theme,
-    );
-  }
+  runApp(GetMaterialApp(
+    title: 'KIDSKA',
+    initialRoute: AppPages.initial,
+    getPages: AppPages.routes,
+    theme: AppTheme.theme,
+  ));
 }

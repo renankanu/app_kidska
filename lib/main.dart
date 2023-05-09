@@ -13,5 +13,6 @@ void main() async {
     initialRoute: AppPages.initial,
     getPages: AppPages.routes,
     theme: AppTheme.theme,
+    debugShowCheckedModeBanner: false,
   ));
 }

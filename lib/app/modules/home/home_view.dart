@@ -169,14 +169,15 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
           ),
-          if (_isLoaded)
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                height: 50,
-                child: AdWidget(ad: _bannerAd!),
-              ),
-            ),
+          // TODO: Adicionar anúncio
+          // if (_isLoaded)
+          //   Align(
+          //     alignment: Alignment.bottomCenter,
+          //     child: SizedBox(
+          //       height: 50,
+          //       child: AdWidget(ad: _bannerAd!),
+          //     ),
+          //   ),
         ],
       ),
     );

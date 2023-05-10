@@ -1,17 +1,19 @@
 import 'package:app_kidska/app/shared/components/app_bar.dart';
 import 'package:app_kidska/app/shared/components/cloud_sun.dart';
+import 'package:app_kidska/core_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 import '../../data/models/numbers.dart';
 import '../../routes/app_pages.dart';
 import '../../shared/images.dart';
 import 'components/button_number.dart';
 
-class NumbersView extends StatelessWidget {
+class NumbersView extends GetView<CoreController> {
   const NumbersView({super.key});
 
   void goToView(Numbers number) {
+    controller.incrementTap();
     Get.toNamed(Routes.numbersDetail, arguments: number);
   }
 

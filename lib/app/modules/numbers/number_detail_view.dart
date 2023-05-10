@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:app_kidska/app/data/models/numbers.dart';
 import 'package:app_kidska/app/shared/colors.dart';
@@ -11,7 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../../core_controller.dart';
 import '../../shared/components/audio_button.dart';
+import '../../shared/utils/ad_mob_config.dart';
 
 class NumberDetailView extends StatefulWidget {
   const NumberDetailView({super.key});
@@ -25,6 +28,10 @@ class _NumberDetailViewState extends State<NumberDetailView> {
   final _player = AudioPlayer();
   bool _isPlaying = false;
   StreamSubscription<PlayerState>? _playerListener;
+  final adUnitId = Platform.isAndroid
+      ? 'ca-app-pub-3940256099942544/1033173712'
+      : 'ca-app-pub-3940256099942544/4411468910';
+  final coreController = Get.find<CoreController>();
 
   @override
   void initState() {
@@ -40,6 +47,10 @@ class _NumberDetailViewState extends State<NumberDetailView> {
         });
       }
     });
+    AdMobConfig.loadInterstitial(
+      adUnitId: adUnitId,
+      coreController: coreController,
+    );
     super.initState();
   }
 

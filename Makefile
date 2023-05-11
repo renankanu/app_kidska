@@ -13,6 +13,7 @@ help:
 
 release: ## Release a flutter version
 	@echo "\033[47m ⊢ Running flutter build appbundle ⊣ \033[0m"
+	@flutter analyze
 	@flutter build appbundle
 	@open "build/app/outputs/bundle/release"
 	@echo "Done ✅"

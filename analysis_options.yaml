@@ -11,11 +11,7 @@ analyzer:
   errors:
     missing_required_param: warning
     missing_return: warning
-    todo: warning
-
-  strong-mode:
-    implicit-casts: false
-    implicit-dynamic: true
+    todo: info
 
 linter:
   rules:

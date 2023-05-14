@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:app_kidska/app/shared/components/cloud_sun.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
@@ -20,12 +21,19 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   BannerAd? _bannerAd;
   bool _isLoaded = false;
-  final adUnitId = Platform.isAndroid
-      ? 'ca-app-pub-3940256099942544/6300978111'
-      : 'ca-app-pub-3940256099942544/2934735716';
+  late String adUnitId;
 
   @override
   void initState() {
+    if (kReleaseMode) {
+      adUnitId =
+          Platform.isAndroid ? 'ca-app-pub-4031327619307152/3068254458' : '';
+    } else {
+      adUnitId = Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716';
+    }
+
     loadBanner();
     super.initState();
   }
@@ -169,15 +177,14 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
           ),
-          // TODO: Adicionar anúncio
-          // if (_isLoaded)
-          //   Align(
-          //     alignment: Alignment.bottomCenter,
-          //     child: SizedBox(
-          //       height: 50,
-          //       child: AdWidget(ad: _bannerAd!),
-          //     ),
-          //   ),
+          if (_isLoaded)
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SizedBox(
+                height: 50,
+                child: AdWidget(ad: _bannerAd!),
+              ),
+            ),
         ],
       ),
     );

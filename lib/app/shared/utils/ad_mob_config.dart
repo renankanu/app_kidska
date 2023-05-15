@@ -6,9 +6,11 @@ import '../../../core_controller.dart';
 class AdMobConfig {
   const AdMobConfig._();
 
-  static void loadInterstitial(
-      {required String adUnitId, required CoreController coreController}) {
-    InterstitialAd.load(
+  static Future<void> loadInterstitial({
+    required String adUnitId,
+    required CoreController coreController,
+  }) async {
+    await InterstitialAd.load(
       adUnitId: adUnitId,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(

@@ -8,6 +8,7 @@ import 'package:app_kidska/app/shared/components/cloud_sun.dart';
 import 'package:app_kidska/app/shared/images.dart';
 import 'package:app_kidska/app/shared/sounds.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -28,13 +29,19 @@ class _NumberDetailViewState extends State<NumberDetailView> {
   final _player = AudioPlayer();
   bool _isPlaying = false;
   StreamSubscription<PlayerState>? _playerListener;
-  final adUnitId = Platform.isAndroid
-      ? 'ca-app-pub-3940256099942544/1033173712'
-      : 'ca-app-pub-3940256099942544/4411468910';
+  late String adUnitId;
   final coreController = Get.find<CoreController>();
 
   @override
   void initState() {
+    if (kReleaseMode) {
+      adUnitId = Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/1033173712'
+          : 'ca-app-pub-3940256099942544/4411468910';
+    } else {
+      adUnitId =
+          Platform.isAndroid ? 'ca-app-pub-4031327619307152/9498803575' : '';
+    }
     number = Get.arguments as Numbers;
     _playerListener = _player.onPlayerStateChanged.listen((event) {
       if (event == PlayerState.playing) {

@@ -5,6 +5,9 @@ import 'core_controller.dart';
 class CoreBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<CoreController>(CoreController.new);
+    Get.lazyPut<CoreController>(
+      CoreController.new,
+      fenix: true,
+    );
   }
 }

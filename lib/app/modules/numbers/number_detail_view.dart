@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:app_kidska/app/data/models/numbers.dart';
 import 'package:app_kidska/app/shared/colors.dart';
@@ -8,14 +7,12 @@ import 'package:app_kidska/app/shared/components/cloud_sun.dart';
 import 'package:app_kidska/app/shared/images.dart';
 import 'package:app_kidska/app/shared/sounds.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../core_controller.dart';
 import '../../shared/components/audio_button.dart';
-import '../../shared/utils/ad_mob_config.dart';
 
 class NumberDetailView extends StatefulWidget {
   const NumberDetailView({super.key});
@@ -29,19 +26,10 @@ class _NumberDetailViewState extends State<NumberDetailView> {
   final _player = AudioPlayer();
   bool _isPlaying = false;
   StreamSubscription<PlayerState>? _playerListener;
-  late String adUnitId;
   final coreController = Get.find<CoreController>();
 
   @override
   void initState() {
-    if (kReleaseMode) {
-      adUnitId = Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/1033173712'
-          : 'ca-app-pub-3940256099942544/4411468910';
-    } else {
-      adUnitId =
-          Platform.isAndroid ? 'ca-app-pub-4031327619307152/9498803575' : '';
-    }
     number = Get.arguments as Numbers;
     _playerListener = _player.onPlayerStateChanged.listen((event) {
       if (event == PlayerState.playing) {
@@ -54,10 +42,7 @@ class _NumberDetailViewState extends State<NumberDetailView> {
         });
       }
     });
-    AdMobConfig.loadInterstitial(
-      adUnitId: adUnitId,
-      coreController: coreController,
-    );
+    _showADS();
     super.initState();
   }
 
@@ -66,6 +51,10 @@ class _NumberDetailViewState extends State<NumberDetailView> {
     _playerListener?.cancel();
     _player.release();
     super.dispose();
+  }
+
+  void _showADS() {
+    coreController.showInterstitialAd();
   }
 
   String get iconByName {

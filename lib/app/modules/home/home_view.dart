@@ -4,9 +4,10 @@ import 'package:app_kidska/app/shared/components/cloud_sun.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../../../core_controller.dart';
 import '../../routes/app_pages.dart';
 import '../../shared/images.dart';
 import 'components/home_card.dart';
@@ -19,6 +20,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final coreController = Get.find<CoreController>();
   BannerAd? _bannerAd;
   bool _isLoaded = false;
   late String adUnitId;

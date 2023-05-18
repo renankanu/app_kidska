@@ -25,20 +25,16 @@ class CoreController extends GetxController {
   }
 
   Future<void> _initBannerAd() async {
-    if (kReleaseMode) {
-      _adBannerId =
-          Platform.isAndroid ? 'ca-app-pub-4031327619307152/3068254458' : '';
-    } else {
-      _adBannerId = Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-3940256099942544/2934735716';
-    }
+    _adBannerId =
+        Platform.isAndroid ? 'ca-app-pub-4031327619307152/3068254458' : '';
     bannerAd = BannerAd(
       adUnitId: _adBannerId,
       size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(
-        onAdLoaded: (ad) {},
+        onAdLoaded: (ad) {
+          _isBannerAdLoaded.value = true;
+        },
         onAdFailedToLoad: (ad, err) {
           debugPrint('BannerAd failed to load: $err');
           ad.dispose();
@@ -49,14 +45,8 @@ class CoreController extends GetxController {
   }
 
   Future<void> _initInterstitialAd() async {
-    if (kReleaseMode) {
-      _adInterstitialId =
-          Platform.isAndroid ? 'ca-app-pub-4031327619307152/9498803575' : '';
-    } else {
-      _adInterstitialId = Platform.isAndroid
-          ? 'ca-app-pub-3940256099942544/1033173712'
-          : 'ca-app-pub-3940256099942544/4411468910';
-    }
+    _adInterstitialId =
+        Platform.isAndroid ? 'ca-app-pub-4031327619307152/9498803575' : '';
     await InterstitialAd.load(
       adUnitId: _adInterstitialId,
       request: const AdRequest(),
@@ -81,9 +71,12 @@ class CoreController extends GetxController {
   }
 
   Future<void> showInterstitialAd() async {
-    log('Taps: ${_taps.value}');
+    log('Taps: $taps');
+    log('InterstitialAd: $_interstitialAd');
     if (taps >= 5 && _interstitialAd != null) {
       await _interstitialAd!.show();
+      _interstitialAd!.dispose();
+      _initInterstitialAd();
       zeroTaps();
     }
   }

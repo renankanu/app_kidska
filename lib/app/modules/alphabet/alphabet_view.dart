@@ -1,17 +1,19 @@
 import 'package:app_kidska/app/data/models/alphabet.dart';
 import 'package:app_kidska/app/shared/components/cloud_sun.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
+import '../../../core_controller.dart';
 import '../../routes/app_pages.dart';
 import '../../shared/components/app_bar.dart';
 import '../../shared/images.dart';
 import 'components/button_letter.dart';
 
-class AlphabetView extends StatelessWidget {
+class AlphabetView extends GetView<CoreController> {
   const AlphabetView({super.key});
 
   void goToView(Alphabet alphabet) {
+    controller.incrementTap();
     Get.toNamed(
       Routes.alphabetDetail,
       arguments: alphabet,

@@ -126,7 +126,7 @@ class HomeView extends GetView<CoreController> {
           ),
           Obx(() {
             if (controller.isBannerAdLoaded) {
-              Align(
+              return Align(
                 alignment: Alignment.bottomCenter,
                 child: SizedBox(
                   height: 50,

@@ -1,16 +1,19 @@
 import 'package:app_kidska/app/data/models/colors.dart';
 import 'package:app_kidska/app/shared/components/app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/route_manager.dart';
 
+import '../../../core_controller.dart';
 import '../../routes/app_pages.dart';
 import '../../shared/components/cloud_sun.dart';
 import '../../shared/images.dart';
 
-class ColorsView extends StatelessWidget {
+class ColorsView extends GetView<CoreController> {
   const ColorsView({super.key});
 
   void goToView(ModelColors color) {
+    controller.incrementTap();
     Get.toNamed(
       Routes.colorsDetail,
       arguments: color,

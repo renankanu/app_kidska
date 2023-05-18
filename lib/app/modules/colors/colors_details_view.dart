@@ -4,8 +4,9 @@ import 'package:app_kidska/app/shared/components/app_bar.dart';
 import 'package:app_kidska/app/shared/components/audio_button.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
+import '../../../core_controller.dart';
 import '../../data/models/colors.dart';
 import '../../shared/components/cloud_sun.dart';
 import '../../shared/images.dart';
@@ -25,6 +26,7 @@ class _ColorsDetailViewState extends State<ColorsDetailView> {
   final _player = AudioPlayer();
   bool _isPlaying = false;
   StreamSubscription<PlayerState>? _playerListener;
+  final coreController = Get.find<CoreController>();
 
   @override
   void initState() {

@@ -5,8 +5,9 @@ import 'package:app_kidska/app/shared/components/audio_button.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
+import '../../../core_controller.dart';
 import '../../shared/colors.dart';
 import '../../shared/components/app_bar.dart';
 import '../../shared/components/cloud_sun.dart';
@@ -27,6 +28,7 @@ class _AlphabetDetailViewState extends State<AlphabetDetailView> {
   final _player = AudioPlayer();
   bool _isPlaying = false;
   StreamSubscription<PlayerState>? _playerListener;
+  final coreController = Get.find<CoreController>();
 
   @override
   void initState() {
@@ -42,6 +44,7 @@ class _AlphabetDetailViewState extends State<AlphabetDetailView> {
         });
       }
     });
+    _showADS();
     super.initState();
   }
 
@@ -52,6 +55,10 @@ class _AlphabetDetailViewState extends State<AlphabetDetailView> {
       _player.release();
     });
     super.dispose();
+  }
+
+  void _showADS() {
+    coreController.showInterstitialAd();
   }
 
   String get iconByName {

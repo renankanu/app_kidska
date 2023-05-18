@@ -1,17 +1,19 @@
 import 'package:app_kidska/app/data/models/animals.dart';
 import 'package:app_kidska/app/shared/components/app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
+import '../../../core_controller.dart';
 import '../../routes/app_pages.dart';
 import '../../shared/components/cloud_sun.dart';
 import '../../shared/images.dart';
 import 'components/button_animal.dart';
 
-class AnimalsView extends StatelessWidget {
+class AnimalsView extends GetView<CoreController> {
   const AnimalsView({super.key});
 
   void goToView(Animals animals) {
+    controller.incrementTap();
     Get.toNamed(Routes.animalsDetail, arguments: animals);
   }
 
